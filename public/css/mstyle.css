@@ -1,0 +1,114 @@
+.gradient-bg, .primary-btn, .add-bag .add-btn, .single-product .product-details .prd-bottom .social-info span:after, .grid-btn:hover, .list-btn:hover, .grid-btn.active, .list-btn.active, .pagination a.active, .pagination a:hover, .s_Product_carousel .owl-dots div.active, .s_product_text .card_area .icon_btn:after, .product_description_area .nav.nav-tabs li a.active, .blog-pagination .page-item.active .page-link, .single-footer-widget .click-btn {
+    background: -webkit-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    background: -moz-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    background: -o-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%); }
+  
+  .gradient-bg-reverse, #search_input_box {
+    background: -webkit-linear-gradient(270deg, #ffba00 0%, #ff6c00 100%);
+    background: -moz-linear-gradient(270deg, #ffba00 0%, #ff6c00 100%);
+    background: -o-linear-gradient(270deg, #ffba00 0%, #ff6c00 100%);
+    background: linear-gradient(270deg, #ffba00 0%, #ff6c00 100%); }
+  
+  .gradient-color, .s_product_text h2, .s_product_text .list li a.active, .product_description_area .tab-content .total_rate .box_total h4, .single-footer-widget .bb-btn {
+    background: -webkit-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    background: -moz-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    background: -o-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+  
+    -webkit-text-fill-color: transparent; }
+  
+
+.primary-btn {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    padding: 0 20px;
+    line-height: 40px;
+    border-radius: 7px;
+    display: inline-block;
+   
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s; }
+    .primary-btn:before {
+      position: absolute;
+      left: -145px;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      content: "";
+      background: #000;
+      opacity: 0;
+      -webkit-transform: skew(40deg);
+      -moz-transform: skew(40deg);
+      -ms-transform: skew(40deg);
+      -o-transform: skew(40deg);
+      transform: skew(40deg);
+      -webkit-transition: all 0.3s ease 0s;
+      -moz-transition: all 0.3s ease 0s;
+      -o-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s; }
+    .primary-btn:hover {
+      color: #fff; }
+      .primary-btn:hover:before {
+        left: 180px;
+        opacity: .3; }
+
+    /* scrollbar */
+        .scroll::-webkit-scrollbar {
+            width: .2em;
+        }
+         
+       .scroll::-webkit-scrollbar-thumb {
+          background-color: #ff6c00;
+        }
+       .scroll::-webkit-scrollbar-thumb:hover {
+          background-color: white;
+        }
+        
+        /* general body overflow */
+        body::-webkit-scrollbar {
+            width: .3em;
+            height: .3em;
+        }
+       
+       body::-webkit-scrollbar-thumb {
+          background-color: #ff6c00;
+        }
+       body::-webkit-scrollbar-thumb:hover {
+          background-color: white;
+        }
+        /* chatroom overflow */
+        #chatroom::-webkit-scrollbar {
+            width: .3em;
+            height: .3em;
+        }
+       
+        #chatroom::-webkit-scrollbar-thumb {
+          background-color: #ff6c00;
+        }
+        #chatroom::-webkit-scrollbar-thumb:hover {
+          background-color: white;
+        }
+
+      .msg {
+        border-top: 1px solid #ff6c00;
+        border-radius: 15px;
+        color: #ff6c00;
+       }
+      .msg2 {
+        border-top: 1px solid white;
+        border-radius: 15px
+       }
+
+       .img {
+         max-width: 40px;
+         max-height: 40px;
+         border-radius: 35%
+        }
+
+        

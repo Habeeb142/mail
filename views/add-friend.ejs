@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Epic | search</title>
+    <link rel="stylesheet" href="/css/mstyle.css">
+    <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+    <link rel="shortcut icon" href="http://icons.iconarchive.com/icons/iconexpo/speech-balloon-orange/256/speech-balloon-orange-e-icon.png" type="image/x-icon">
+</head>
+
+
+<body style="background-color: black" class="text-light">
+    <div class="bg animated bounceInLeft mt-4 col-12 col-lg-4 offset-lg-4">
+        <div align="center" class="bg-text">
+            EPIC MAIL ::::::: CHAT LIST
+        </div>
+        <div style="font-style: italic; text-align: center" class="mb-4">
+            connect with friend at ease....
+        </div>
+    </div>
+        
+    <div class="animated bounceInDown col-12 col-lg-5 mt-3 offset-lg-4">
+        <a href="/friendList/<%=user%>" class="btn btn-outline-light col-lg-5 mt-4">Friends</a>
+        <a href="/group" class="btn btn-outline-light col-lg-5 mt-4">Group</a>
+    </div>
+    <% if(frnd_id=='er'){ %>
+        <div class="animated bounceInUp col-12 col-lg-4 offset-lg-4" style="margin-top: 55px">
+            <div class="alert alert-warning text-center" style="font-size: 12px"><strong class="text-uppercase"><%=user %></strong> Please type in a valid username of a friend</div>
+            <form action="/search" method="POST" class="input-group mt-2 col-12">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">Search</span>
+                </div>
+                    <input type="hidden" name="user" value="<%=user%>">
+                    <input type="text" id="search" class="form-control" name="search_frnd"  placeholder="search and add new friend" aria-label="search" aria-describedby="basic-addon2">
+                    <div class="col-12 mt-3">
+                        <button class="primary-btn col-12">Check</button>
+                    </div>
+            </form>
+        </div>
+    <% } 
+     if(frnd_id == 'found') {%>
+        <div class="col-12 col-lg-4 mt-5 offset-lg-4">
+            <img class="img-rounded offset-5" alt="img loading" style="height: 50px; width: 50px; border-radius: 15px" src=/userImages/<%=file %> >
+        </div>
+        <form action="adding-new-friend" method="post">
+            <div class="col-12 col-lg-4 mt-3 offset-lg-4">
+                <input type="hidden" name="user" value="<%=user%>">
+                <input type="hidden" name="file" value="<%=file%>">
+                <label>
+                    USERNAME:
+                </label>
+                <input class="btn btn-outline-light col-12 mt-1" name="frnd_username" readonly value="<%=username %>">
+            </div>
+            <div class="col-12 col-lg-4 mt-3 offset-lg-4">
+                <label>
+                    MOBILE:
+                </label>
+                <input class="btn btn-outline-light col-12 mt-1" name="frnd_mobile" readonly value="<%=mobile %>">
+            </div>    
+
+                <button type="submit" class="btn btn-outline-dark col-12 offset-lg-4 col-lg-4 mt-4 text-light">Add</button>
+            </div>
+        </form>
+        
+    <% } 
+    
+    if(frnd_id=='nf') { %>
+        <div class="animated bounceInUp col-12 col-lg-4 offset-lg-4" style="margin-top: 55px">
+            <div class="alert alert-danger text-center" style="font-size: 12px"><strong> <%=username%> </strong>does not exist in the database</div>
+            <form action="/search" method="POST" class="input-group mt-2 col-12">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">Search</span>
+                </div>
+                
+                    <input type="text" id="search" class="form-control" name="search_frnd"  placeholder="search and add new friend" aria-label="search" aria-describedby="basic-addon2">
+                    <div class="col-12 mt-3">
+                        <button class="btn col-12">Add</button>
+                    </div>
+            </form>
+        </div>
+   <% }%>
+
+    
+   <div class="bg animated bounceInLeft mt-3 col-11 col-lg-4 offset-lg-4 text-center" style="font-size: 12px">
+        <div id="bottom">
+            Epic mail allows you to connect with your friends, family, work partner and loved ones at ease..
+        </div>
+
+        <div id="bottom">
+            (C) copyright 2019
+        </div>
+    </div>
+  
+</body>
+
+</html>

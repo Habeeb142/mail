@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Epic | friends</title>
+
+    <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/mstyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+    <link rel="shortcut icon" href="http://icons.iconarchive.com/icons/iconexpo/speech-balloon-orange/256/speech-balloon-orange-e-icon.png" type="image/x-icon">
+</head>
+
+<body style="background:black; ">
+    <div class="bg animated bounceInLeft mt-4 col-12 col-md-4 offset-md-4">
+        <div align="center" class="bg-text text-light">
+            EPIC MAIL
+        </div>
+        <div style="font-style: italic; text-align: center" class="mb-4">
+            connect with friend at ease....
+        </div>
+        <% if(status){ %>
+        <div class="alert alert-success text-center text-uppercase font-weight-bold font-italic" style="font-size: 12px">
+            Waoo, New friend added!
+        </div>
+        <%} %>
+        <% if(!status){ %>
+        <div class="alert alert-danger text-center text-uppercase font-weight-bold font-italic" style="font-size: 12px">
+                Sorry <strong><%= user %></strong>, <strong style="font-style: italic"><%= friendUsername %></strong> is already on your list
+        </div>
+        <%} %>
+        
+        <div class="p-2 scroll" style="border: 1px solid #ff6c00; border-radius: 5px; overflow-y: auto; max-height: 70vh">
+            <div class="animated bounceInDown text-center text-light col-12 mt-2" style="font-size: 15px">
+                You have <%=total %> friend(s) in your list
+            </div>
+            <% for(x in frnd_details)  {%>
+                <div class="animated bounceInDown col-12">
+                    <a href="/chat/<%=frnd_details[x].friendUsername%>/<%=user%>" class="btn btn-outline-dark col-12 mt-4 font-weight-bold" style="color: white">
+                        <img src="/userImages/<%=frnd_details[x].friendPic%>" style="height: 40px; width: 40px; border-radius: 15px; float: left;" />
+                        <%= frnd_details[x].friendUsername %>
+                    </a>
+                </div>
+            <% } %>
+           
+        </div>
+        <div class="animated bounceInLeft mt-4 col-12 text-center" style="font-size: 13px">
+            <div>
+                Epic mail allows you to connect with your friends, family, work partner and loved ones at ease..
+            </div>
+    
+            <div>
+                (C) copyright 2019
+            </div>
+        </div>
+    </div>
+</body>
+</html>

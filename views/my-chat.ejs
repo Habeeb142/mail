@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Epic | loggged-in</title>
+    <link rel="stylesheet" href="/css/mstyle.css">
+    <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript" src="/jquery 3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="/animate.css">
+    <link rel="shortcut icon" href="http://icons.iconarchive.com/icons/iconexpo/speech-balloon-orange/256/speech-balloon-orange-e-icon.png" type="image/x-icon">
+</head>
+
+<!-- setting logger into localStorage -->
+<script>
+    username = "<%=username %>";
+    localStorage.setItem("username", username);
+</script>
+            
+<body style="background: black; color: white">
+    <div class="bg animated bounceInLeft mt-4 col-12 col-lg-4 offset-lg-4">
+        <div align="center" class="bg-text">
+            EPIC MAIL ::::::: CHAT LIST
+        </div>
+        <div style="font-style: italic; text-align: center" class="mb-4">
+            connect with friend at ease....
+        </div>
+    </div>
+    
+    <% if(status=='empty-friend-list'){ %>
+        <div class="alert alert-warning text-sm-center col-lg-4 offset-4 font-italic font-weight-bold" style="font-size: 12px">
+        Sorry <%=username%>!, you have no friend in your list.
+        </div>
+    <% }
+    
+    else{ %>
+        <div class="alert alert-warning text-center col-lg-4 offset-lg-4 font-italic font-weight-bold" style="font-size: 12px">
+            You are logged in!
+        </div>
+    <% } %>
+
+    <div class="animated bounceInDown col-12 col-lg-5 mt-5 offset-lg-4">
+        <a href="/add-friend/<%=username%>" class="primary-btn mt-5 col-lg-3 text-center" style="text-decoration: none">Add friend</a>
+        <a href="/friendList/<%=username%>" class="primary-btn mt-5 col-lg-3 text-center" style="text-decoration: none">Friends</a>
+        <div class="primary-btn mt-5 col-lg-3 text-center" style="text-decoration: none">Group</div>
+    </div>
+    
+    <div class="bg animated bounceInLeft mt-4 col-11 col-lg-4 offset-lg-4 text-center mt-5" style="font-size: 13px;">
+        <div id="bottom">
+            Epic mail allows you to connect with your friends, family, work partner and loved ones at ease..
+        </div>
+
+        <div id="bottom">
+            (C) copyright 2019
+        </div>
+    </div>
+  
+</body>
+
+</html>
