@@ -3,12 +3,12 @@ var express = require('express');
 const epic = express();
 
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-// myPort = epic.listen(port = 3000 || env.process.PORT  , '192.168.43.57', ()=>{
-//     console.log("EPIC is listening to port "+port+" sir!");
-// });
-myPort = epic.listen(3000, '192.168.43.57', ()=>{
-    console.log("EPIC is listening to port 3000 sir!");
-});
+ myPort = epic.listen(env.process.PORT', ()=>{
+     console.log("EPIC is listening to port well sir!");
+ });
+//myPort = epic.listen(3000, '192.168.43.57', ()=>{
+//    console.log("EPIC is listening to port 3000 sir!");
+//});
 
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
