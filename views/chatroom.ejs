@@ -24,7 +24,7 @@
 </body>
 <script>
     $(function(){
-        var socket = io.connect('http://192.168.43.57:3000');
+        var socket = io.connect('env.process.PORT');
         var sender= '<%=user%>';
         var recipient = '<%=frndUsername%>';
         var message = $("#message");
