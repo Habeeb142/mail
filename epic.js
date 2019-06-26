@@ -26,3 +26,6 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 epic.use(bodyParser.json());
 epic.use(bodyParser.urlencoded({extended:true}));
+
+epic.get('/', (req,res)=>{res.send('g')
+})
