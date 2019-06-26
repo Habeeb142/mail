@@ -24,7 +24,7 @@
 </body>
 <script>
     $(function(){
-        var socket = io.connect('env.process.PORT');
+        var socket = io();
         var sender= '<%=user%>';
         var recipient = '<%=frndUsername%>';
         var message = $("#message");
