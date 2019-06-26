@@ -2,10 +2,7 @@
 var express = require('express');
 const epic = express();
 
-//connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
- myPort = epic.listen('process.env.PORT', ()=>{
-     console.log("EPIC is listening to port well sir!");
- });
+
 
 epic.listen('process.env.PORT', ()=>{
      console.log("EPIC is listening to port well sir!");
