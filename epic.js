@@ -52,7 +52,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 //database configuration: optional:::::::::::::::::::::::::::::::::::::::::::::::::
-mongoose.connect("mongodb://localhost:27017/epic_db");
+// mongoose.connect("mongodb://localhost:27017/epic_db");
 
 //user schema::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 let userSchema = mongoose.Schema({
