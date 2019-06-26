@@ -53,7 +53,6 @@ mongoose.Promise = global.Promise;
 
 //database configuration: optional:::::::::::::::::::::::::::::::::::::::::::::::::
 // mongoose.connect("mongodb://localhost:27017/epic_db");
-console.log('here') ;
 //user schema::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 let userSchema = mongoose.Schema({
     username: String,
@@ -83,7 +82,7 @@ let messages = mongoose.Schema({
     timeStampSec: Number
 });
 let message = mongoose.model("message_prop", messages)
-
+console.log('here') ;
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
 epic.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
