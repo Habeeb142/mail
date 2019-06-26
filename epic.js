@@ -3,7 +3,7 @@ var express = require('express');
 const epic = express();
 
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
- myPort = epic.listen(process.env.PORT', ()=>{
+ myPort = epic.listen('process.env.PORT', ()=>{
      console.log("EPIC is listening to port well sir!");
  });
 //myPort = epic.listen(3000, '192.168.43.57', ()=>{
