@@ -82,12 +82,12 @@ let messages = mongoose.Schema({
     timeStampSec: Number
 });
 let message = mongoose.model("message_prop", messages)
-console.log('here') ;
+
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
 epic.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
 });
-
+console.log('here') ;
 //routing into signup page::::::::::::::::::::::::::::::::::::::::::::::::
 epic.get('/signup.epic', (req,res)=>{
     res.render('signup', {status: null, username: null, mobile: null});
