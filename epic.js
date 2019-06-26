@@ -6,6 +6,11 @@ const epic = express();
  myPort = epic.listen('process.env.PORT', ()=>{
      console.log("EPIC is listening to port well sir!");
  });
+
+epic.listen('process.env.PORT', ()=>{
+     console.log("EPIC is listening to port well sir!");
+ });
+
 //myPort = epic.listen(3000, '192.168.43.57', ()=>{
 //    console.log("EPIC is listening to port 3000 sir!");
 //});
