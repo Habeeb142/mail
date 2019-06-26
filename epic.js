@@ -4,7 +4,7 @@ const epic = express();
 var request = require('request');
 
 
-myPort = epic.listen('process.env.PORT', ()=>{
+myPort = epic.listen('process.env.PORT' || 3000, ()=>{
      console.log("EPIC is listening to port well sir!");
  });
 
