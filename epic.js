@@ -44,7 +44,6 @@ mongoose.Promise = global.Promise;
 
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
 app.get('/', (req, res)=>{
-    res.render('index');
+    res.render('index', { status: null, username: null });
 });
 
-\
