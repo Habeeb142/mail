@@ -31,14 +31,7 @@ var mongoose = require('mongoose');
 //setting promise::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 mongoose.Promise = global.Promise;
 
-//database configuration:::::::::::::::::::::::::::::::::::::::::::::::::
-//mongoose.connect("mongodb://localhost:27017/bvn_app");
-
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
 app.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
-});
-
-epic.get('/signup.epic', (req,res)=>{
-    res.render('signup', {status: null, username: null, mobile: null});
 });
