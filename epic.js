@@ -38,6 +38,6 @@ app.get('/', (req, res)=>{
 
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-epic.get('/signup.epic', (req,res)=>{console.log('hehe')
+epic.get('/signup', (req,res)=>{console.log('hehe')
 //     res.render('signup', {status: null, username: null, mobile: null});
 });
