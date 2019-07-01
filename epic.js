@@ -198,7 +198,7 @@ epic.get('/chat/:frndUsername/:user', (req, res)=>{
 });
 
 //socket io section start()::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-const io = require('socket.io')(myPort);
+const io = require('socket.io')(port);
 
 //opening socket connection::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 io.on('connection', (socket)=>{
