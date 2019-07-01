@@ -35,3 +35,9 @@ mongoose.Promise = global.Promise;
 app.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
 });
+
+
+/signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+epic.get('/signup.epic', (req,res)=>{
+    res.render('signup', {status: null, username: null, mobile: null});
+});
