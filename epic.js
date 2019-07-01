@@ -37,7 +37,7 @@ app.get('/', (req, res)=>{
 });
 
 
-/signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.get('/signup.epic', (req,res)=>{
     res.render('signup', {status: null, username: null, mobile: null});
 });
