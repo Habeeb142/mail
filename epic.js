@@ -1,17 +1,17 @@
 //making express available::::::::::::::::::::::::::::::::::::::::::::::::
 var express = require('express');
-const app = express();
+const epic = express();
 var request = require('request');
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-const port = app.listen(process.env.PORT || 3000, ()=>{
+const port = epic.listen(process.env.PORT || 3000, ()=>{
     console.log("app is listening to port 3000 sir!");
 });
 
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
-app.set('view engine', 'ejs');
+epic.set('view engine', 'ejs');
 
 //middlewares:::
-app.use(express.static(__dirname+'/public'));
+epic.use(express.static(__dirname+'/public'));
 
 //requiring formidable and fs::::::::::::::::::::::::::::::::::::::::::::
 var fm = require('formidable');
@@ -22,8 +22,8 @@ var form = new fm.IncomingForm();
 
 //requiring body-parser::::::::::::::::::::::::::::::::::::::::::::::::::::
 var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+epic.use(bodyParser.json());
+epic.use(bodyParser.urlencoded({extended:true}));
 
 //require mongoose::::::::::::::::::::::::::::::::::::::::::::::::::::::
 var mongoose = require('mongoose');
@@ -32,7 +32,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
-app.get('/', (req, res)=>{
+epic.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
 });
 
