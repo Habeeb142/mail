@@ -3,7 +3,7 @@ var express = require('express');
 const epic = express();
 var request = require('request');
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-const port = epic.listen(process.env.PORT || 3000, ()=>{
+const port = epic.listen(process.env.PORT, ()=>{
     console.log("app is successfully listening remotely boss!");
 });
 
