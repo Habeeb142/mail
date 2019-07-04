@@ -156,70 +156,52 @@ epic.get('/add/:frnd_id/:frnd_username/:frnd_mobile/:frnd_file/:user', (req, res
 
 //submitting new friend's data to data-base:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.post('/adding-new-friend', (req,res)=>{
-   
-        let newdata = {
-            friendUsername: req.body.frnd_username,
-            user: req.body.user,
-            friendPic: req.body.file
-        };
+    let newdata = {
+        friendUsername: req.body.frnd_username,
+        user: req.body.user,
+        friendPic: req.body.file
+    };
+sql_select = `SELECT * FROM friend where user like
+    '${newdata.user}' AND friendUsername like '${newdata.friendUsername}'`;
+    connection.query(sql_select, (err, data, fields)=>{
+     //checking if friends exist:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\
+    if(data==''){
+        sql_insert = `INSERT into friend (user, friendUsername, friendPic) values('${newdata.user}','${newdata.friendUsername}','${newdata.friendPic}')`;
+        connection.query(sql_insert, (err,data)=>{
+            if(err)throw err;
+            connection.query(sql_select, (err, data, fields)=>{
+                res.render('friend-list', {status: true, frnd_details: data, total: data.length, user: newdata.user })
+            })
+        });
+    }
 
-        friend.find({ user: newdata.user, friendUsername: newdata.friendUsername }, (err, data)=>{
-            //checking if friends exist:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-            if(data==''){
-                //new friend into db:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-                let nfrnd = new friend(newdata);
-                nfrnd.save().then(data=>{
-                    //fetching all friends of the user:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-                    friend.find({ user: newdata.user }, (err, data)=>{ 
-                        res.render('friend-list', {status: true, frnd_details: data, total: data.length, user: newdata.user })
-                    })
-                })
-
-                // //setting a default message
-                // let msg = {
-                //     user: req.body.user,
-                //     message: 'Welcome',
-                //     frndUsername: newdata.friendUsername,
-                //     timeStampHr: 0,
-                //     timeStampMin: 0,
-                //     timeStampSec: 0
-                // };
-                // let newMessage = new message(msg);
-                // newMessage.save().then(data=>{
-
-                // })
-            }
-            else{
-                friend.find({ user: newdata.user }, (err, data)=>{ 
-                    res.render('friend-list', {status: false, frnd_details: data, total: data.length, user: newdata.user, friendUsername: newdata.friendUsername })
-                })
-            }
+    else{
+        connection.query(sql_select, (err, data, fields)=>{
+            res.render('friend-list', {status: false, frnd_details: data, total: data.length, user: newdata.user, friendUsername: newdata.friendUsername })
         })
-
-
+    }
+})
 })
 
 //displaying list of friends:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.get('/friendList/:user', (req, res)=>{
-    //fetching all friends of the user:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-    friend.find({ user: req.params.user }, (err, data)=>{
+   //fetching all friends of the user:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    sql_select = `SELECT * FROM friend where user like
+    '${req.params.user}'`;
+    connection.query(sql_select, (err, data, fields)=>{
+        
         if(data==''){
             res.render('my-chat', { status: 'empty-friend-list', data: null, username: req.params.user});
         }
         else{
             //not empty::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-            //user.find({ username: data[0].friendUsername}, (err, frnd_detail)=>{
-               res.render('friend-list', {status: 'ne', frnd_details: data, total: data.length, user: req.params.user })
-           // })
+            sql_select = `SELECT username, mobile, file FROM user where username like
+            '${data[0].friendUsername}'`;
+            connection.query(sql_select, (err, frnd_detail, fields)=>{
+                res.render('friend-list', {status: 'ne', frnd_details: data, total: data.length, user: req.params.user })
+            })
         }
-    })
-});
-
-//displaying chat-room:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-epic.get('/chat/:frndUsername/:user', (req, res)=>{
-    message.find({ user: req.params.user, frndUsername: req.params.frndUsername }, (err, data)=>{
-       res.render('chatroom', { user: req.params.user, frndUsername: req.params.frndUsername });
-    })
+   })
 });
 
 //socket io section start()::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
