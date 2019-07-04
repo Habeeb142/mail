@@ -1,11 +1,19 @@
 //making express available::::::::::::::::::::::::::::::::::::::::::::::::
 var express = require('express');
+//socket io section start:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+const socketIO = require('socket.io');
+//requirung path:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+const path = require('path);
+
 const epic = express();
+
 var request = require('request');
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
 const port = epic.listen(process.env.PORT, ()=>{
     console.log("app is successfully listening remotely boss!");
 });
+
+const io = socketIO(port);
 
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
@@ -208,9 +216,6 @@ epic.get('/friendList/:user', (req, res)=>{
 epic.get('/chat/:frndUsername/:user', (req, res)=>{
    res.render('chatroom', { user: req.params.user, frndUsername: req.params.frndUsername });
 });
-
-//socket io section start()::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-const io = require('socket.io')(port);
 
 //opening socket connection::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 io.on('connection', (socket)=>{
