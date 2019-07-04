@@ -18,7 +18,7 @@ var fm = require('formidable');
 var fs = require('fs');
 
 //creating a method from formidable class::::::::::::::::::::::::::::::
-var form = new fm.IncomingForm();
+//var form = new fm.IncomingForm();
 
 //requiring body-parser::::::::::::::::::::::::::::::::::::::::::::::::::::
 var bodyParser = require('body-parser');
@@ -53,7 +53,6 @@ epic.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
 });
 
-
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.get('/sign_up', (req,res)=>{
      res.render('signup', {status: null, username: null, mobile: null});
@@ -84,12 +83,16 @@ epic.post('/signup', (req, res)=>{
         
                 //putting into database and sending from temporary location to permanent location::::::::::::::::::::::::::::::::::::
                 fs.rename(tmp, imgLink, ()=>{
-                    
-                    var nUser = new user(newUserInfo);
-                    nUser.save().then(data=>{
-                        res.render('index', {status: 'signedIn', username: fields.username, mobile: null})
-                    })
-                })
+                    sql_insert = `INSERT into user (username, mobile, password, file) values('${newUserInfo.username}','${newUserInfo.mobile}','${newUserInfo.password}','${newUserInfo.file}')`;
+                    connection.query(sql_insert, (err,data)=>{
+                        if(err)throw err;
+                        res.render('index', { status: 'signedIn', username: fields.username, mobile: null})
+                    });
+                    // var nUser = new user(newUserInfo);
+                    // nUser.save().then(data=>{
+                    //     res.render('index', {status: 'signedIn', username: fields.username, mobile: null})
+                    // })
+                });
             }
         else{
             res.render('signup', { status: 'password_err', username: fields.username, mobile: fields.mobile })
@@ -99,7 +102,7 @@ epic.post('/signup', (req, res)=>{
         res.render('signup', { status: 'fillform_err', username: fields.username, mobile: fields.mobile })
     }     
 })
-});
+})
 
 //rendering into dashborad if requirement is being met or reload login if otherwise
 epic.post('/login', (req, res)=>{
