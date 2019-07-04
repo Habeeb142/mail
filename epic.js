@@ -204,6 +204,11 @@ epic.get('/friendList/:user', (req, res)=>{
    })
 });
 
+//displaying chat-room:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+epic.get('/chat/:frndUsername/:user', (req, res)=>{
+   res.render('chatroom', { user: req.params.user, frndUsername: req.params.frndUsername });
+});
+
 //socket io section start()::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 const io = require('socket.io')(port);
 
