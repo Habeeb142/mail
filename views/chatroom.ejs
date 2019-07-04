@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Epic | Chatroom</title>
     <link rel="stylesheet" href="/css/mstyle.css">
-    <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
-    <script type="text/javascript" src="/js/jquery 3.3.1.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+    <script type="text/javascript" src="/jquery 3.3.1.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">
     <link rel="shortcut icon" href="http://icons.iconarchive.com/icons/iconexpo/speech-balloon-orange/256/speech-balloon-orange-e-icon.png" type="image/x-icon">
     <script type="text/javascript" src="/js/socket.io.js"></script>
 </head>
@@ -49,7 +49,7 @@
             for (x in data.msg_prop) {
                 //displaying for the user=sender
                 if(username==data.msg_prop[x].user){
-                    chatroom.append(`<div class='msg2 col-10 row offset-2 float-right mt-1 pt-1 text-right'>
+                    chatroom.append(`<div class='msg2 col-10 row offset-2 float-right mt-1 pt-1 text-right animated rollIn'>
                         <div class="text-left col-1">${ data.msg_prop[x].timeStampHr }:${ data.msg_prop[x].timeStampMin }</div> 
                         <div class="col-7 col-lg-10">${ data.msg_prop[x].message }  </div>
                         <img src="/userImages/${ data.frnd_img1 }" class="col-3 col-md-1 img" alt="">
@@ -57,7 +57,7 @@
                 }
                 //displaying for the friend=recipient
                 else{
-                    chatroom.append(`<div class='msg col-10 row mt-1 pt-1 float-left text-left'>
+                    chatroom.append(`<div class='msg col-10 row mt-1 pt-1 float-left text-left animated rollIn'>
                         <div class="col-7">${ data.msg_prop[x].message }  </div>
                         <div class="text-right col-2">${ data.msg_prop[x].timeStampHr }:${ data.msg_prop[x].timeStampMin }</div> 
                         <img src="/userImages/${ data.frnd_img }" class="col-3 col-md-1 img" alt="">
@@ -76,7 +76,7 @@
         socket.on('typing',(data)=>{
             if(sender==' '+data.recipient || sender==data.recipient){
                 if(recipient==' '+data.sender || recipient==data.sender)
-                feedback.html(`<p class='text-light text-center'>${data.sender}<i> is typing a message...</i></p>`);
+                feedback.html(`<p class='text-light text-center animated bounce'>${data.sender}<i> is typing a message...</i></p>`);
             }
         });
 
@@ -108,14 +108,14 @@
         //listening to the messages from back-end
         socket.on('new_message', (data)=>{
             if(username==data.msg_prop.user){
-                chatroom.append(`<div class='msg2 col-10 row offset-2 float-right mt-1 pt-1 text-right'>
+                chatroom.append(`<div class='msg2 col-10 row offset-2 float-right mt-1 pt-1 text-right animated rollIn'>
                     <div class="text-left col-2">${ data.msg_prop.timeStampHr }:${ data.msg_prop.timeStampMin }</div> 
                     <div class="col-10">${ data.msg_prop.message }  </div>
                 </div>`);
                 }
                 //displaying for the friend=recipient
                 else{
-                    chatroom.append(`<div class='msg col-10 row mt-1 pt-1 float-left text-left'>
+                    chatroom.append(`<div class='msg col-10 row mt-1 pt-1 float-left text-left animated rollIn'>
                         <div class="col-10">${ data.msg_prop.message }  </div>
                         <div class="text-right col-2">${ data.msg_prop.timeStampHr }:${ data.msg_prop.timeStampMin }</div> 
                     </div>`)
