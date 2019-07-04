@@ -105,9 +105,10 @@ epic.post('/signup', (req, res)=>{
 })
 
 //rendering into dashborad if requirement is being met or reload login if otherwise
-epic.post('/login', (req, res)=>{
-    user.find({ username: req.body.username, password: req.body.password }, (err, myList)=>{
-        //console.log(myList);
+epic.post('/login', (req,res)=>{
+    sql_select = `SELECT username, mobile, file FROM user where username like '${req.body.username}' AND password = '${req.body.password}'` ;
+
+    connection.query(sql_select, (err, myList, fields)=>{
         if(myList==''){
             res.render('index', { status: 'username_err', username: null});
         }
