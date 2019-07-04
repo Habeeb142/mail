@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Epic | friends</title>
-
+    <title>Epic | Friends</title>
     <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/css/mstyle.css">
@@ -13,7 +12,7 @@
     <link rel="shortcut icon" href="http://icons.iconarchive.com/icons/iconexpo/speech-balloon-orange/256/speech-balloon-orange-e-icon.png" type="image/x-icon">
 </head>
 
-<body style="background:black; ">
+<body style="background:black;">
     <div class="bg animated bounceInLeft mt-4 col-12 col-md-4 offset-md-4">
         <div align="center" class="bg-text text-light">
             EPIC MAIL
@@ -30,6 +29,8 @@
         <div class="alert alert-danger text-center text-uppercase font-weight-bold font-italic" style="font-size: 12px">
                 Sorry <strong><%= user %></strong>, <strong style="font-style: italic"><%= friendUsername %></strong> is already on your list
         </div>
+        <%} %>
+        <% if(status=='ne){ %>  
         <%} %>
         
         <div class="p-2 scroll" style="border: 1px solid #ff6c00; border-radius: 5px; overflow-y: auto; max-height: 70vh">
