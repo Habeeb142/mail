@@ -131,7 +131,11 @@ epic.post('/search', (req,res)=>{
         // empty request = er
         res.render('add-friend', { frnd_id: 'er', user: req.body.user })
     }
-    user.find({ username: frndUsername }, (err, friends)=>{
+    // user.find({ username: frndUsername }, (err, friends)=>{
+    sql_select = `SELECT username, mobile, file FROM user where username like
+     '${frndUsername}'`;
+
+    connection.query(sql_select, (err, friends, fields)=>{
         
         if(friends==''){
             // seach not found = nf
@@ -145,10 +149,10 @@ epic.post('/search', (req,res)=>{
     });
 });
 
-// //rendering back into add friend page with new friend's data:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-// epic.get('/add/:frnd_id/:frnd_username/:frnd_mobile/:frnd_file/:user', (req, res)=>{
-//     res.render('add-friend', { frnd_id: 'found', username: req.params.frnd_username, mobile: req.params.frnd_mobile, file: req.params.frnd_file, user: req.params.user })
-// });
+//rendering back into add friend page with new friend's data:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+epic.get('/add/:frnd_id/:frnd_username/:frnd_mobile/:frnd_file/:user', (req, res)=>{
+    res.render('add-friend', { frnd_id: 'found', username: req.params.frnd_username, mobile: req.params.frnd_mobile, file: req.params.frnd_file, user: req.params.user })
+});
 
 //submitting new friend's data to data-base:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.post('/adding-new-friend', (req,res)=>{
