@@ -12,7 +12,7 @@ const epic = express();
 
 var request = require('request');
 const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, 'index.html');
+const INDEX = path.join(__dirname, 'index.ejs');
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
@@ -30,6 +30,12 @@ epic.set('view engine', 'ejs');
 
 //middlewares:::
 epic.use(express.static(__dirname+'/public'));
+
+const INDEX = path.join(__dirname, 'index.ejs');
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
 
 //requiring formidable and fs::::::::::::::::::::::::::::::::::::::::::::
 var fm = require('formidable');
