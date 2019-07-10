@@ -11,7 +11,7 @@ var request = require('request');
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
 const port = express()
 .use((req, res) => res.render('index') )
-  .listen(process.env.PORT, () => console.log(`Listening on portt`));
+  .listen(process.env.PORT, () => console.log('ewe'));
 
 const io = socketIO(epic);
 
