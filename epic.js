@@ -20,13 +20,13 @@ const server = epic.listen(port, ()=>{
     console.log("app is listening to port sir!");
 });
 
+// var express = require('express'),
+//     server = express.createServer(express.logger()),
+//     io = require('socket.io').listen(server),
+//     routes = require('routes');
+
 //const io = socketIO(port);
 const io = socket.listen(server);
-
-io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-});
 
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
