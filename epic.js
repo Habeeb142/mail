@@ -27,9 +27,7 @@ epic.set('view engine', 'ejs');
 
 
 //const INDEX = path.join(__dirname, 'index.html');
-const server = express()
-  .use((req, res) => res.render('index.ejs', { status: null, username: null }) )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
 const io = socketIO(server);
 //middlewares:::
 epic.use(express.static(__dirname+'/public'));
