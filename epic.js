@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 
 
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-const port = epic.listen(process.env.PORT, () => {
+const port = epic.listen(PORT, () => {
     console.log('connected to server successfully sir')
 });
 
