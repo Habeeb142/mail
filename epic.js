@@ -29,7 +29,7 @@ const io = socketIO(server);
 epic.set('view engine', 'ejs');
 
 //middlewares:::
-//epic.use(express.static(__dirname+'/public'));
+epic.use(express.static(__dirname+'/public'));
 
 //requiring formidable and fs::::::::::::::::::::::::::::::::::::::::::::
 var fm = require('formidable');
@@ -67,9 +67,9 @@ var mongoose = require('mongoose');
 //mongoose.Promise = global.Promise;
 
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
-// epic.get('/', (req, res)=>{
-//     res.render('index', { status: null, username: null });
-// });
+epic.get('/', (req, res)=>{
+    res.render('index', { status: null, username: null });
+});
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.get('/sign_up', (req,res)=>{
