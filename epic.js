@@ -68,7 +68,7 @@ epic.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
 });
 
-//const io = socketIO('server');
+const io = socketIO('server');
 
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
