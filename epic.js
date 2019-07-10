@@ -1,5 +1,7 @@
+'use strict';
+
 //making express available:::::::::::::::::::::::::::::::::::::::::::::::
-var express = require('express');
+//var express = require('express');
 //socket io section start:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 const socketIO = require('socket.io');
 //requirung path:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -7,19 +9,27 @@ const path = require('path');
 
 const epic = express();
 
-var request = require('request');
-//connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-const port = epic.listen(process.env.PORT, () => {
-    console.log('connected to server successfully sir')
-});
 
-const io = socketIO(port);
+var request = require('request');
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'index.html');
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const io = socketIO(server);
+//connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
+// const port = epic.listen(process.env.PORT, () => {
+//     console.log('connected to server successfully sir')
+// });
+
+//const io = socketIO(port);
 
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
 
 //middlewares:::
-epic.use(express.static(__dirname+'/public'));
+//epic.use(express.static(__dirname+'/public'));
 
 //requiring formidable and fs::::::::::::::::::::::::::::::::::::::::::::
 var fm = require('formidable');
@@ -57,9 +67,9 @@ var mongoose = require('mongoose');
 //mongoose.Promise = global.Promise;
 
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
-epic.get('/', (req, res)=>{
-    res.render('index', { status: null, username: null });
-});
+// epic.get('/', (req, res)=>{
+//     res.render('index', { status: null, username: null });
+// });
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.get('/sign_up', (req,res)=>{
