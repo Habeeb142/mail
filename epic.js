@@ -223,7 +223,7 @@ epic.get('/chat/:frndUsername/:user', (req, res)=>{
 });
 
 //opening socket connection::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-io.sockets.on('connection', (socket)=>{
+io.on('connection', (socket)=>{
     console.log('socket connection succesful sir');
 
     //receiving typing from the user and broadcasting the word typing back to the user:::::::::::::::::::::::::::::::::::::::::::::::
