@@ -59,7 +59,7 @@ connection.connect(function(err){
 
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
 epic.get('/', (req, res)=>{
-    res.redirect('index', { status: null, username: null });
+    res.render('index', { status: null, username: null });
 });
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
