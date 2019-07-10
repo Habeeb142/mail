@@ -9,11 +9,11 @@ const epic = express();
 
 var request = require('request');
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-const port = epic.listen(process.env.PORT, ()=>{
-    console.log("app is successfully listening remotely boss!");
-});
+const port = express()
+.use((req, res) => res.render('index') )
+  .listen(process.env.PORT, () => console.log(`Listening on portt`));
 
-const io = socketIO(port);
+const io = socketIO(epic);
 
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
