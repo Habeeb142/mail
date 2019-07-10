@@ -25,12 +25,9 @@ const PORT = process.env.PORT || 3000;
 epic.set('view engine', 'ejs');
 
 
-
-//const INDEX = path.join(__dirname, 'index.html');
-const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
-const io = socketIO(server);
 //middlewares:::
 epic.use(express.static(__dirname+'/public'));
+
 //requiring formidable and fs::::::::::::::::::::::::::::::::::::::::::::
 var fm = require('formidable');
 var fs = require('fs');
@@ -70,6 +67,12 @@ var mongoose = require('mongoose');
 epic.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
 });
+
+//const INDEX = path.join(__dirname, 'index.html');
+const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const io = socketIO(server);
+
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.get('/sign_up', (req,res)=>{
