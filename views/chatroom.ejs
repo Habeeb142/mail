@@ -24,7 +24,7 @@
 </body>
 <script>
     $(function(){
-        var socket = io.connect('/');
+        var socket = io.connect(window.location.hostname);
         var sender= '<%=user%>';
         var recipient = '<%=frndUsername%>';
         var message = $("#message");
