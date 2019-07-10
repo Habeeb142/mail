@@ -26,7 +26,7 @@ var express = require('express'),
     routes = require('routes');
 
 //const io = socketIO(port);
-const io = socket.listen(server);
+//const io = socket.listen(server);
 
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
