@@ -3,7 +3,7 @@ var express = require('express');
 //socket io section start:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 const socketIO = require('socket.io');
 //requirung path:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-const path = require('path');
+//const path = require('path');
 
 const epic = express();
 
@@ -54,21 +54,12 @@ connection.connect(function(err){
     console.log('Database connected!')
 });
 
-//require mongoose::::::::::::::::::::::::::::::::::::::::::::::::::::::
-var mongoose = require('mongoose');
-
-//setting promise::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//mongoose.Promise = global.Promise;
-
-//const INDEX = path.join(__dirname, 'index.html');
-//const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
 epic.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
 });
 
-const io = socketIO('port');
+const io = socketIO(port);
 
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
