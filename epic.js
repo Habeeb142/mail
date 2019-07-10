@@ -1,5 +1,3 @@
-'use strict';
-
 //making express available:::::::::::::::::::::::::::::::::::::::::::::::
 var express = require('express');
 //socket io section start:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -15,11 +13,14 @@ var request = require('request');
 
 
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-const server = epic.listen(process.env.PORT, () => {
+const server = epic.listen(process.env.PORT || 3000, () => {
     console.log('connected to server successfully sir')
 });
 
 //const io = socketIO(port);
+
+//setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
+epic.set('view engine', 'ejs');
 
 //middlewares:::
 epic.use(express.static(__dirname+'/public'));
@@ -27,9 +28,6 @@ epic.use(express.static(__dirname+'/public'));
 //requiring formidable and fs::::::::::::::::::::::::::::::::::::::::::::
 var fm = require('formidable');
 var fs = require('fs');
-
-//setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
-epic.set('view engine', 'ejs');
 
 //creating a method from formidable class::::::::::::::::::::::::::::::
 //var form = new fm.IncomingForm();
@@ -70,9 +68,7 @@ epic.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
 });
 
-
-
-const io = socketIO('server');
+//const io = socketIO('server');
 
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
