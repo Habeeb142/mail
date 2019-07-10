@@ -16,14 +16,14 @@ const port = process.env.PORT || 3000;
 
 
 //connecting to host::::::::::::::::::::::::::::::::::::::::::::::::::
-const server = epic.listen(port, ()=>{
-    console.log("app is listening to port sir!");
-});
+// const server = epic.listen(port, ()=>{
+//     console.log("app is listening to port sir!");
+// });
 
-// var express = require('express'),
-//     server = express.createServer(express.logger()),
-//     io = require('socket.io').listen(server),
-//     routes = require('routes');
+var express = require('express'),
+    server = express.createServer(express.logger()),
+    io = require('socket.io').listen(server),
+    routes = require('routes');
 
 //const io = socketIO(port);
 const io = socket.listen(server);
