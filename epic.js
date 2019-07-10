@@ -13,8 +13,8 @@ var request = require('request');
 
 
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-const server = epic.listen(process.env.PORT || 3000, () => {
-    console.log('connected to server successfully sir')
+const port = epic.listen(process.env.PORT || 3000, ()=>{
+    console.log("app is listening to port 3000 sir!");
 });
 
 //const io = socketIO(port);
@@ -68,7 +68,7 @@ epic.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
 });
 
-const io = socketIO('server');
+const io = socketIO('port');
 
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
