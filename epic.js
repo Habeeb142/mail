@@ -29,7 +29,7 @@ epic.use(express.static(__dirname+'/public'));
 
 //const INDEX = path.join(__dirname, 'index.html');
 const server = express()
-  .use((req, res) => res.render('index') )
+  .use((req, res) => res.render('index.ejs') )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 const io = socketIO(server);
 
