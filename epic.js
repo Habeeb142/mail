@@ -21,16 +21,15 @@ const PORT = process.env.PORT || 3000;
 
 //const io = socketIO(port);
 
-//setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
-epic.set('view engine', 'ejs');
-
-
 //middlewares:::
 epic.use(express.static(__dirname+'/public'));
 
 //requiring formidable and fs::::::::::::::::::::::::::::::::::::::::::::
 var fm = require('formidable');
 var fs = require('fs');
+
+//setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
+epic.set('view engine', 'ejs');
 
 //creating a method from formidable class::::::::::::::::::::::::::::::
 //var form = new fm.IncomingForm();
@@ -63,13 +62,15 @@ var mongoose = require('mongoose');
 //setting promise::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //mongoose.Promise = global.Promise;
 
+//const INDEX = path.join(__dirname, 'index.html');
+const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
 epic.get('/', (req, res)=>{
     res.render('index', { status: null, username: null });
 });
 
-//const INDEX = path.join(__dirname, 'index.html');
-const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
 
 const io = socketIO(server);
 
