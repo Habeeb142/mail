@@ -24,15 +24,15 @@ const PORT = process.env.PORT || 3000;
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
 
-//middlewares:::
-epic.use(express.static(__dirname+'/public'));
+
 
 //const INDEX = path.join(__dirname, 'index.html');
 const server = express()
   .use((req, res) => res.render('index.ejs', { status: null, username: null }) )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 const io = socketIO(server);
-
+//middlewares:::
+epic.use(express.static(__dirname+'/public'));
 //requiring formidable and fs::::::::::::::::::::::::::::::::::::::::::::
 var fm = require('formidable');
 var fs = require('fs');
