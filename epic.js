@@ -223,45 +223,42 @@ epic.get('/chat/:frndUsername/:user', (req, res)=>{
 });
 
 //opening socket connection::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-const nsp = io.of('/my-namespace');
-nsp.on('connection', function(socket){
-  console.log('someone connected');
+
+io.sockets.on('connection', (socket)=>{
+    console.log('socket connection succesful sir');
+
+    //receiving typing from the user and broadcasting the word typing back to the user:::::::::::::::::::::::::::::::::::::::::::::::
+    socket.on('typing', (data)=>{
+        socket.broadcast.emit('typing', { sender: data.sender, recipient: data.recipient })
+    });
+
+    //receiving not typing and emiting back not typing:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    socket.on('not-typing', (data)=>{
+        socket.broadcast.emit('not-typing', { sender: data.sender, recipient: data.recipient })
+    });
+
+    //listenung and emitting old messages
+    socket.on('old_message', (data)=>{
+         message.find({ $or: [{ user: data.user, frndUsername: data.frndUsername}, { user: data.frndUsername, frndUsername: data.user }] }, (err, dat)=>{
+            user.find({ username: data.frndUsername }, (err, result)=>{//console.log(dat);
+                user.find({ username: data.user }, (err, result1)=>{
+                    socket.emit('old_message', { msg_prop: dat, frnd_img: result[0].file , frnd_img1: result1[0].file })
+                })
+            })
+         })
+    })
+
+    //emitting message::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    socket.on('new_message', (data)=>{
+        let newMessage = new message(data);
+        newMessage.save().then(dat=>{
+            io.sockets.emit('new_message', { msg_prop: data })
+           // user.find({ username: dat.frndUsername }, (err, result)=>{//console.log(result);
+              //  user.find({ username: dat.user }, (err, result1)=>{
+               // })
+           // })
+        })
+    })
 });
-// io.sockets.on('connection', (socket)=>{
-//     console.log('socket connection succesful sir');
-
-//     //receiving typing from the user and broadcasting the word typing back to the user:::::::::::::::::::::::::::::::::::::::::::::::
-//     socket.on('typing', (data)=>{
-//         socket.broadcast.emit('typing', { sender: data.sender, recipient: data.recipient })
-//     });
-
-//     //receiving not typing and emiting back not typing:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//     socket.on('not-typing', (data)=>{
-//         socket.broadcast.emit('not-typing', { sender: data.sender, recipient: data.recipient })
-//     });
-
-//     //listenung and emitting old messages
-//     socket.on('old_message', (data)=>{
-//          message.find({ $or: [{ user: data.user, frndUsername: data.frndUsername}, { user: data.frndUsername, frndUsername: data.user }] }, (err, dat)=>{
-//             user.find({ username: data.frndUsername }, (err, result)=>{//console.log(dat);
-//                 user.find({ username: data.user }, (err, result1)=>{
-//                     socket.emit('old_message', { msg_prop: dat, frnd_img: result[0].file , frnd_img1: result1[0].file })
-//                 })
-//             })
-//          })
-//     })
-
-//     //emitting message::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//     socket.on('new_message', (data)=>{
-//         let newMessage = new message(data);
-//         newMessage.save().then(dat=>{
-//             io.sockets.emit('new_message', { msg_prop: data })
-//            // user.find({ username: dat.frndUsername }, (err, result)=>{//console.log(result);
-//               //  user.find({ username: dat.user }, (err, result1)=>{
-//                // })
-//            // })
-//         })
-//     })
-// });
 
 
