@@ -15,9 +15,9 @@ const PORT = process.env.PORT || 3000;
 
 
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-// const port = epic.listen(process.env.PORT, () => {
-//     console.log('connected to server successfully sir')
-// });
+const port = epic.listen(process.env.PORT, () => {
+    console.log('connected to server successfully sir')
+});
 
 //const io = socketIO(port);
 
@@ -63,7 +63,7 @@ var mongoose = require('mongoose');
 //mongoose.Promise = global.Promise;
 
 //const INDEX = path.join(__dirname, 'index.html');
-const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
+//const server = express().listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
 epic.get('/', (req, res)=>{
@@ -72,7 +72,7 @@ epic.get('/', (req, res)=>{
 
 
 
-const io = socketIO(server);
+const io = socketIO(PORT);
 
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
