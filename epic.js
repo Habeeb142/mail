@@ -15,7 +15,7 @@ var request = require('request');
 
 
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-const port = epic.listen(process.env.PORT, () => {
+const server = epic.listen(process.env.PORT, () => {
     console.log('connected to server successfully sir')
 });
 
@@ -72,7 +72,7 @@ epic.get('/', (req, res)=>{
 
 
 
-const io = socketIO('PO');
+const io = socketIO('server');
 
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
