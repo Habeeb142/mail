@@ -9,7 +9,9 @@ const epic = express();
 
 var request = require('request');
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-const port = express().listen(process.env.PORT, () => console.log('connected to server successfully sir'));
+const port = epic.listen(process.env.PORT, () => {
+    console.log('connected to server successfully sir')
+});
 
 const io = socketIO(port);
 
