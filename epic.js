@@ -1,24 +1,28 @@
 //making express available:::::::::::::::::::::::::::::::::::::::::::::::
 var express = require('express');
+
 //socket io section start:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 const socket = require('socket.io');
+
 //requirung path:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//const path = require('path');
+const path = require('path');
 
 const epic = express();
 
 
 var request = require('request');
+
 const port = process.env.PORT || 3000;
 
 
-//connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
+//connecting to host::::::::::::::::::::::::::::::::::::::::::::::::::
 const server = epic.listen(port, ()=>{
-    console.log("app is listening to port 3000 sir!");
+    console.log("app is listening to port sir!");
 });
 
 //const io = socketIO(port);
-const io = socket.listen(server) ;
+const io = socket.listen(server);
+
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
 
@@ -219,7 +223,7 @@ epic.get('/chat/:frndUsername/:user', (req, res)=>{
 });
 
 //opening socket connection::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-io.on('connection', (socket)=>{
+io.sockets.on('connection', (socket)=>{
     console.log('socket connection succesful sir');
 
     //receiving typing from the user and broadcasting the word typing back to the user:::::::::::::::::::::::::::::::::::::::::::::::
