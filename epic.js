@@ -1,7 +1,7 @@
 //making express available:::::::::::::::::::::::::::::::::::::::::::::::
 var express = require('express');
 //socket io section start:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-const socketIO = require('socket.io');
+const socket = require('socket.io');
 //requirung path:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //const path = require('path');
 
@@ -9,18 +9,21 @@ const epic = express();
 
 
 var request = require('request');
-//const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 
 //connecting to locahost::::::::::::::::::::::::::::::::::::::::::::::::::
-const port = epic.listen(process.env.PORT || 3000, ()=>{
+const server = epic.listen(port, ()=>{
     console.log("app is listening to port 3000 sir!");
 });
 
 //const io = socketIO(port);
-
+const io = socket.listen(server) ;
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
+
+io.set('origins', '*:*')
+io.set('match origin protocol', true)
 
 //middlewares:::
 epic.use(express.static(__dirname+'/public'));
@@ -56,11 +59,8 @@ connection.connect(function(err){
 
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
 epic.get('/', (req, res)=>{
-    res.render('index', { status: null, username: null });
+    res.redirect('index', { status: null, username: null });
 });
-
-const io = socketIO(port);
-
 
 //signup:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.get('/sign_up', (req,res)=>{
