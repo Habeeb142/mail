@@ -18,6 +18,8 @@
 <!-- <div id="demo" style="color: white"></div>
 <script>
    $(function(){
+   var HOST = location.origin.replace(/^http/, 'ws')
+      var ws = new WebSocket(HOST);
         const socket = io('https://myepicmail.herokuapp.com');
    }	
    username = localStorage.getItem('username');
