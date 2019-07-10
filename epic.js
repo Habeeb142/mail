@@ -1,8 +1,6 @@
 //making express available:::::::::::::::::::::::::::::::::::::::::::::::
 var express = require('express');
 
-const SocketServer = require('ws').Server;
-
 //socket io section start:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 const socket = require('socket.io');
 //requirung path:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -23,13 +21,6 @@ const server = epic.listen(port, ()=>{
 
 //const io = socketIO(port);
 const io = socket.listen(server);
-
-const wss = new SocketServer({ server });
-
-wss.on('connection', (ws) => {
-  console.log('Client connected');
-  ws.on('close', () => console.log('Client disconnected'));
-});
 
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
