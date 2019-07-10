@@ -13,7 +13,7 @@ const port = express()
 .use((req, res) => res.render('index') )
   .listen(process.env.PORT, () => console.log('ewe'));
 
-const io = socketIO(epic);
+const io = socketIO(port);
 
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
