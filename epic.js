@@ -19,7 +19,7 @@ const server = epic.listen(port, ()=>{
 });
 
 let http = require('http').Server(epic);
-let io = require('socket.io')(http);
+let io = require('socket.io')(http).listen(server);
 
 //const io = socketIO(port);
 //const io = socket.listen(server);
