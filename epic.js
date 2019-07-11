@@ -18,6 +18,7 @@ const server = epic.listen(port, ()=>{
     console.log("app is listening to port sir!");
 });
 
+//connecting socket to server:::::::::::::::::::::::::::::::::::::::::
 let http = require('http').Server(epic);
 let io = socket(http).listen(server);
 
