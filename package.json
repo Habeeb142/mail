@@ -16,7 +16,7 @@
     "web-push": "^3.3.3",
     "mongoose": "^5.4.2",
     "request" : "^2.88.0",
-    "socket.io": "2.2.0",
+    "socket.io": "2.1.1",
      "ws": "1.1.0"
   }
 }
