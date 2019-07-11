@@ -239,15 +239,15 @@ io.sockets.on('connection', (socket)=>{
     socket.on('old_message', (data)=>{
          //message.find({ $or: [{ user: data.user, frndUsername: data.frndUsername}, { user: data.frndUsername, frndUsername: data.user }] }, (err, dat)=>{
         sql_select = `SELECT * FROM message where user in ( '${data.user}','${data.frndUsername}' ) AND frndUsername in ('${data.frndUsername}', '${data.user}')`;
-        connection.query(sql_select, (err, dat, fields)=>{console.log(dat)
-            // user.find({ username: data.frndUsername }, (err, result)=>{//console.log(dat);
+        connection.query(sql_select, (err, dat, fields)=>{
+            // user.find({ username: data.frndUsername }, (err, result)=>{
             //     user.find({ username: data.user }, (err, result1)=>{
             sql_select1 = `SELECT username, mobile, file FROM user where username like
             '${data.frndUsername}'`;
             sql_select0 = `SELECT username, mobile, file FROM user where username like
             '${data.user}'`;
             connection.query(sql_select1, (err, result, fields)=>{
-                connection.query(sql_select0, (err, result1, fields)=>{console.log(result1)
+                connection.query(sql_select0, (err, result1, fields)=>{
                     socket.emit('old_message', { msg_prop: dat, frnd_img: result[0].file , frnd_img1: result1[0].file })
                 })
             })
@@ -262,7 +262,7 @@ io.sockets.on('connection', (socket)=>{
             connection.query(sql_insert, (err,data)=>{
                 if(err) throw err;
                 io.sockets.emit('new_message', { msg_prop: dat })
-           // user.find({ username: dat.frndUsername }, (err, result)=>{//console.log(result);
+           // user.find({ username: dat.frndUsername }, (err, result)=>{
               //  user.find({ username: dat.user }, (err, result1)=>{
                // })
            // })
