@@ -36,7 +36,6 @@
         var timeStamp = new Date();
         var username = localStorage.getItem("username");
         var chatroom = $('#chatroom');
-        
         //emitting old_message:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         socket.emit('old_message', { user: username, frndUsername: recipient });
         //listening to the old messages from back-end:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
