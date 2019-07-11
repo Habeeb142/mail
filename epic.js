@@ -21,6 +21,12 @@ const server = epic.listen(port, ()=>{
 //const io = socketIO(port);
 const io = socket.listen(server);
 
+var servr = require('http').createServer(epic)
+  ioo = require("socket.io").listen(servr);
+
+  ioo.set("transports", ["websocket"]);
+  ioo.set("polling duration", 10)
+
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
 
@@ -222,7 +228,7 @@ epic.get('/chat/:frndUsername/:user', (req, res)=>{
 
 //opening socket connection::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-io.sockets.on('connection', (socket)=>{
+ioo.sockets.on('connection', (socket)=>{
     console.log('socket connection succesful sir');
 
     //receiving typing from the user and broadcasting the word typing back to the user:::::::::::::::::::::::::::::::::::::::::::::::
