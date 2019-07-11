@@ -253,17 +253,19 @@ io.sockets.on('connection', (socket)=>{
          })
     })
 
-    //emitting message::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-    socket.on('new_message', (data)=>{
-        let newMessage = new message(data);
-        newMessage.save().then(dat=>{
-            io.sockets.emit('new_message', { msg_prop: data })
+       //emitting message::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    socket.on('new_message', (dat)=>{
+        // let newMessage = new message(data);
+        // newMessage.save().then(dat=>{
+            sql_insert = `INSERT into message (user, message, frndUsername, timeStampHr, timeStampMin, timeStampSec) values('${dat.user}','${dat.message}','${dat.frndUsername}','${dat.timeStampHr}','${dat.timeStampMin}','${dat.timeStampSec}')`;
+            connection.query(sql_insert, (err,data)=>{
+                if(err) throw err;
+                io.sockets.emit('new_message', { msg_prop: dat })
            // user.find({ username: dat.frndUsername }, (err, result)=>{//console.log(result);
               //  user.find({ username: dat.user }, (err, result1)=>{
                // })
            // })
         })
-    })
-});
-
+     })
+})
 
