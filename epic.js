@@ -18,8 +18,11 @@ const server = epic.listen(port, ()=>{
     console.log("app is listening to port sir!");
 });
 
+let http = require('http').Server(epic);
+let io = require('socket.io')(http);
+
 //const io = socketIO(port);
-const io = socket.listen(server);
+//const io = socket.listen(server);
 
 //setting engine to ejs::::::::::::::::::::::::::::::::::::::::::::::::::
 epic.set('view engine', 'ejs');
