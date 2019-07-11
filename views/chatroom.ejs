@@ -26,6 +26,8 @@
 <script>
     $(function(){
         private socket = io();
+var host = location.origin;
+io.connect(host, {port: PORT, transports: ["websocket"]});
         var sender= '<%=user%>';
         var recipient = '<%=frndUsername%>';
         var message = $("#message");
