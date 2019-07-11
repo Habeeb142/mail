@@ -13,15 +13,6 @@ var request = require('request');
 
 const port = process.env.PORT || 3000;
 
-epic.listen(epic.get('port'), function() {
-  console.log('Node app is running on port..', epic.get('port'));
-});
-var servr = epic.listen(4200);
-var ioo = require('socket.io')(servr);
-ioo.on('connect',(socket)=>{
-    console.log('connected..........');
-})
-
 //connecting to host::::::::::::::::::::::::::::::::::::::::::::::::::
 const server = epic.listen(port, ()=>{
     console.log("app is listening to port sir!");
