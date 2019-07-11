@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">
     <link rel="shortcut icon" href="http://icons.iconarchive.com/icons/iconexpo/speech-balloon-orange/256/speech-balloon-orange-e-icon.png" type="image/x-icon">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.min.js')></script>
-<script src=”https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src=”https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 
 </head>
 <body style="background-color: black;">
@@ -27,7 +27,7 @@
 <script>
 
     $(function(){
-        var socket = io('https://myepicmail.herokuapp.com');
+        var socket = io.connect('https://myepicmail.herokuapp.com');
         var sender= '<%=user%>';
         var recipient = '<%=frndUsername%>';
         var message = $("#message");
