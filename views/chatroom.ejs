@@ -26,7 +26,7 @@
 </body>
 <script>
 
-    $(function(){alert()
+    $(function(){
         var socket = io.connect('https://myepicmail.herokuapp.com');
         var sender= '<%=user%>';
         var recipient = '<%=frndUsername%>';
@@ -79,7 +79,7 @@
         socket.on('typing',(data)=>{
             if(sender==' '+data.recipient || sender==data.recipient){
                 if(recipient==' '+data.sender || recipient==data.sender)
-                feedback.html(`<p class='text-light text-center animated bounce'>${data.sender}<i> is typing a message...</i></p>`);
+              feedback.html(`<p class='text-light text-center animated flash'>${data.sender}<i> is typing a message...</i></p>`);
             }
         });
 
