@@ -2,7 +2,7 @@
 var express = require('express');
 
 //socket io section start:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-//const socket = require('socket.io');
+const socket = require('socket.io');
 //requirung path:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //const path = require('path');
 
