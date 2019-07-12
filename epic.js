@@ -2,9 +2,9 @@
 var express = require('express');
 
 //socket io section start:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-const socket = require('socket.io');
+//const socket = require('socket.io');
 //requirung path:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-const path = require('path');
+//const path = require('path');
 
 const epic = express();
 
@@ -260,7 +260,7 @@ io.sockets.on('connection', (socket)=>{
         // newMessage.save().then(dat=>{
             sql_insert = `INSERT into message (user, message, frndUsername, timeStampHr, timeStampMin, timeStampSec) values('${dat.user}','${dat.message}','${dat.frndUsername}','${dat.timeStampHr}','${dat.timeStampMin}','${dat.timeStampSec}')`;
             connection.query(sql_insert, (err,data)=>{
-                if(err) throw err;
+                
                 io.sockets.emit('new_message', { msg_prop: dat })
            // user.find({ username: dat.frndUsername }, (err, result)=>{
               //  user.find({ username: dat.user }, (err, result1)=>{
