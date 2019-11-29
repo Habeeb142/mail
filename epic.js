@@ -47,18 +47,7 @@ epic.use(bodyParser.urlencoded({extended:true}));
 var mysql = require('mysql');
 
 //seting connection:::::::::::::::::::::::::::::::::::::::::
-let connection = mysql.createConnection({
-    host: "remotemysql.com",
-    user: "1JTq39QISa",
-    password: "wO8zfGSyqY",
-    database: "1JTq39QISa"
-});
 
-//connecting::::::::::::::::::::::::::::::::::::::::::::
-connection.connect(function(err){
-    if(err) throw err;
-    console.log('Database connected!')
-});
 
 //index - onload::::::::::::::::::::::::;:::::::::::::::::::::::::::::::::
 epic.get('/', (req, res)=>{
