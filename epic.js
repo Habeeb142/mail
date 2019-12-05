@@ -18,17 +18,17 @@ const server = epic.listen(port, ()=>{
     console.log("app is listening to port sir!");
 });
 
-//seting connection:::::::::::::::::::::::::::::::::::::::::
-let connection = mysql.createConnection({
-    host: "remotemysql.com",
-    user: "mN9ieqOOQ7",
-    password: "WbJQeVpWB2",
-    database: "epicmail_db"
-    // host: "remotemysql.com",
-    // user: "1JTq39QISa",
-    // password: "wO8zfGSyqY",
-    // database: "1JTq39QISa"
-});
+// //seting connection:::::::::::::::::::::::::::::::::::::::::
+// let connection = mysql.createConnection({
+//     host: "remotemysql.com",
+//     user: "mN9ieqOOQ7",
+//     password: "WbJQeVpWB2",
+//     database: "epicmail_db"
+//     // host: "remotemysql.com",
+//     // user: "1JTq39QISa",
+//     // password: "wO8zfGSyqY",
+//     // database: "1JTq39QISa"
+// });
 
 //connecting socket to server:::::::::::::::::::::::::::::::::::::::::
 let http = require('http').Server(epic);
