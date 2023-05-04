@@ -191,6 +191,7 @@ sql_select = `SELECT * FROM friend where user like
 
     else{
         connection.query(sql_select, (err, data, fields)=>{
+            console.log(err)
             res.render('friend-list', {status: false, frnd_details: data, total: data.length, user: newdata.user, friendUsername: newdata.friendUsername })
         })
     }
