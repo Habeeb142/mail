@@ -1,6 +1,6 @@
 //making express available:::::::::::::::::::::::::::::::::::::::::::::::
 var express = require('express');
-
+var mysql = require('mysql');
 //socket io section start:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 const socket = require('socket.io');
 //requirung path:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -19,16 +19,17 @@ const server = epic.listen(port, ()=>{
 });
 
 // //seting connection:::::::::::::::::::::::::::::::::::::::::
-// let connection = mysql.createConnection({
-//     host: "remotemysql.com",
-//     user: "mN9ieqOOQ7",
-//     password: "WbJQeVpWB2",
-//     database: "epicmail_db"
-//     // host: "remotemysql.com",
-//     // user: "1JTq39QISa",
-//     // password: "wO8zfGSyqY",
-//     // database: "1JTq39QISa"
-// });
+let connection = mysql.createConnection({
+    host: "ontap-mz-db.mysql.database.azure.com",
+    user: "mzdb@ontap-mz-db",
+    password: "Admin@12345",
+    database: "mz_task_table",
+    ssl: true
+    // host: "remotemysql.com",
+    // user: "1JTq39QISa",
+    // password: "wO8zfGSyqY",
+    // database: "1JTq39QISa"
+});
 
 //connecting socket to server:::::::::::::::::::::::::::::::::::::::::
 let http = require('http').Server(epic);
@@ -98,6 +99,7 @@ epic.post('/signup', (req, res)=>{
                 fs.rename(tmp, imgLink, ()=>{
                     sql_insert = `INSERT into user (username, mobile, password, file) values('${newUserInfo.username}','${newUserInfo.mobile}','${newUserInfo.password}','${newUserInfo.file}')`;
                     connection.query(sql_insert, (err,data)=>{
+                        console.log(err)
                         if(err)throw err;
                         res.render('index', { status: 'signedIn', username: fields.username, mobile: null})
                     });
@@ -147,7 +149,7 @@ epic.post('/search', (req,res)=>{
     // user.find({ username: frndUsername }, (err, friends)=>{
     sql_select = `SELECT username, mobile, file FROM user where username like '${frndUsername}'`;
 
-    connection.query(sql_select, (err, friends, fields)=>{
+    connection.query(sql_select, (err, friends, fields)=>{console.log(err)
         
         if(friends==''){
             // seach not found = nf
@@ -201,7 +203,7 @@ epic.get('/friendList/:user', (req, res)=>{
     sql_select = `SELECT * FROM friend where user like
     '${req.params.user}'`;
     connection.query(sql_select, (err, data, fields)=>{
-        
+        console.log(err)
         if(data==''){
             res.render('my-chat', { status: 'empty-friend-list', data: null, username: req.params.user});
         }
